@@ -26,7 +26,8 @@ export default class Facedetection extends Component {
             canDetectFaces: false,
             faces: [],
             maskWidth: 10,
-            maskHeight: 10
+            maskHeight: 10,
+            imgPath: null
         };
 
     }
@@ -46,6 +47,7 @@ export default class Facedetection extends Component {
         if (this.camera) {
             const data = await this.camera.takePictureAsync();
             console.warn('takePicture ', data);
+            this.setState({ imgPath: data.uri })
         }
     };
 
@@ -117,8 +119,7 @@ export default class Facedetection extends Component {
         const { canDetectFaces } = this.state;
         return (
             <View style={styles.container}>
-                <Text>Face detection</Text>
-
+                <Text>Face detection</Text> 
                 <RNCamera
                     ref={ref => {
                     this.camera = ref;
@@ -235,12 +236,18 @@ export default class Facedetection extends Component {
                 } */}
 
         {!!canDetectFaces && this.renderFaces()}
+                
+                
+                    {this.state.imgPath && 
+                    
+                <Image source={{ uri: this.state.imgPath }} style={{width: 100, height: 100}} />
+                    
+                    }
+                
+
                 </RNCamera>
                 
                
-                
-                
-
             </View>
         )
     }
