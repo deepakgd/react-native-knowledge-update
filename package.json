@@ -14,6 +14,7 @@
     "lodash.find": "^4.6.0",
     "react": "16.8.6",
     "react-native": "0.60.0",
+    "react-native-camera": "^2.11.1",
     "react-native-canvas": "^0.1.33",
     "react-native-dropdownalert": "^4.1.0",
     "react-native-elements": "^1.1.0",

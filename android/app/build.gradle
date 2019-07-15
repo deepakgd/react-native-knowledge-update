@@ -116,6 +116,7 @@ android {
     defaultConfig {
         applicationId "com.knowledgeupdateapp"
         minSdkVersion rootProject.ext.minSdkVersion
+        missingDimensionStrategy 'react-native-camera', 'general'
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
@@ -164,6 +165,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-camera')
     implementation project(':react-native-webview')
     implementation project(':@react-native-community_async-storage')
     implementation project(':react-native-gesture-handler')
