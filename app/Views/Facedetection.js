@@ -91,8 +91,8 @@ export default class Facedetection extends Component {
             // styles.face,
             {
               ...bounds.size,
-              left: bounds.origin.x,
-              top: bounds.origin.y-50,
+              left: bounds.origin.x+20,
+              top: bounds.origin.y-120,
             },
           ]}
         >

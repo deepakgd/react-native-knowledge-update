@@ -4,7 +4,9 @@ import CanvasPOCScreen from '../Views/CanvasPOC';
 import DragglePocScreen from '../Views/DragglePoc';
 import BarcodeScannerScreen from '../Views/BarcodeScanner';
 import FacedetectionScreen from '../Views/Facedetection';
+import FaceMaskScreen from '../Views/FaceMask';
 import AdvanceCameraScreen from '../Views/AdvanceCamera';
+import FaceMarkerScreen from '../Views/FaceMarker';
 
 /* Icon key is optional. It must be of type string and its value should match a valid provider icon
   name.
@@ -17,6 +19,8 @@ export default [
   { name: 'Draggle Poc', screen: DragglePocScreen, icon: 'information-outline' },
   { name: 'BarcodeScanner', screen: BarcodeScannerScreen, icon: 'scanner' },
   { name: 'Facedetection', screen: FacedetectionScreen, icon: 'face' },
-  { name: 'AdvanceCamera', screen: AdvanceCameraScreen, icon: 'camera' }
+  { name: 'FaceMask', screen: FaceMaskScreen, icon: 'face' },
+  { name: 'AdvanceCamera', screen: AdvanceCameraScreen, icon: 'camera' },
+  { name: 'FaceMarker', screen: FaceMarkerScreen, icon: 'information-outline', isDrawerDisabled: true },
 ];
  
