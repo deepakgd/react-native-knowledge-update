@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { View,StyleSheet } from 'react-native';
-import { LoginButton, AccessToken, LoginManager } from 'react-native-fbsdk';
-import { ShareApi } from 'react-native-fbsdk';
+import { View,StyleSheet, Button, Text } from 'react-native';
+import { LoginButton, AccessToken, LoginManager, ShareDialog, ShareApi } from 'react-native-fbsdk';
+
 
 export default class FacebookComponent extends Component {
   componentDidMount() {
@@ -21,11 +21,45 @@ export default class FacebookComponent extends Component {
       }
     );
   }
+
+  shareLinkWithShareDialog = () => {
+    console.log("invoked")
+    var tmp = this;
+    ShareDialog.canShow( {
+      contentType: 'link',
+      contentUrl: "https://facebook.com",
+      contentDescription: 'Wow, check out this great site!',
+    }).then(
+      function(canShow) {
+        if (canShow) {
+          return ShareDialog.show( {
+            contentType: 'link',
+            contentUrl: "https://facebook.com",
+            contentDescription: 'Wow, check out this great site!',
+          });
+        }
+      }
+    ).then(
+      function(result) {
+        if (result.isCancelled) {
+          console.log('Share cancelled');
+        } else {
+          console.log('Share success with postId: '
+            + result.postId);
+        }
+      },
+      function(error) {
+        console.log('Share fail with error: ' + error);
+      }
+    );
+  }
+
+
   render() {
     return (
       <View style={styles.container}>
         <LoginButton
-          publishPermissions={['publish_actions']}
+          publishPermissions={['email','publish_actions']}
           onLoginFinished={(error, result) => {
             if (error) {
               console.log(error);
@@ -40,6 +74,11 @@ export default class FacebookComponent extends Component {
           }}
           onLogoutFinished={() => console.log('logout.')}
         />
+
+
+        <Text>Link share</Text>
+        <Button title="FB Share" onPress={this.shareLinkWithShareDialog}/>
+
       </View>
     );
   }
