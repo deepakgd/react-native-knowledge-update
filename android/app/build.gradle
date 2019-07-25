@@ -140,6 +140,7 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
+            multiDexEnabled true
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
@@ -165,6 +166,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-maps')
     implementation project(':react-native-camera')
     implementation project(':react-native-webview')
     implementation project(':@react-native-community_async-storage')
@@ -173,6 +175,7 @@ dependencies {
     implementation project(':react-native-fbsdk')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation 'com.android.support:multidex:1.0.3'
 
     // JSC from node_modules
     if (useIntlJsc) {
