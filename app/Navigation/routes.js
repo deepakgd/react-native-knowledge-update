@@ -8,7 +8,8 @@ import FaceMaskScreen from '../Views/FaceMask';
 import AdvanceCameraScreen from '../Views/AdvanceCamera';
 import FaceMarkerScreen from '../Views/FaceMarker';
 import FacebookComponentScreen from '../Views/FacebookComponent';
-import GoogleMap from '../Views/GoogleMap';
+import GoogleMapScreen from '../Views/GoogleMap';
+import CurrentLocationScreen from '../Views/CurrentLocation';
 
 /* Icon key is optional. It must be of type string and its value should match a valid provider icon
   name.
@@ -25,6 +26,7 @@ export default [
   { name: 'AdvanceCamera', screen: AdvanceCameraScreen, icon: 'camera' },
   { name: 'FaceMarker', screen: FaceMarkerScreen, icon: 'information-outline', isDrawerDisabled: true },
   { name: 'FacebookComponent', screen: FacebookComponentScreen, icon: 'facebook' },
-  { name: 'GoogleMap', screen: GoogleMap, icon: 'map' }
+  { name: 'GoogleMap', screen: GoogleMapScreen, icon: 'map' },
+  { name: 'CurrentLocation', screen: CurrentLocationScreen, icon: 'map'  }
 ];
  
