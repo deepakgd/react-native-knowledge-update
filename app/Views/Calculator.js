@@ -35,9 +35,18 @@ export default class Calculator extends React.Component{
                 isCalculated: true 
             });
         } else {
-            this.setState((prevState) => {
-                return { calculations: (prevState.calculations ? prevState.calculations.toString(): "") + value }
-            });
+            let content = this.state.calculations ? this.state.calculations.toString().split("") : [];
+
+            if(content.length > 0 && this.operators.indexOf(content[content.length -1]) >= 0 && this.operators.indexOf(value) >= 0){
+                content.splice(content.length - 1, 1);
+                content = content.join("") + value;
+                this.setState({ calculations: content });
+            } else {
+                this.setState((prevState) => {
+                    return { calculations: (prevState.calculations ? prevState.calculations.toString(): "") + value }
+                });
+            }
+            
         } 
     }
 
