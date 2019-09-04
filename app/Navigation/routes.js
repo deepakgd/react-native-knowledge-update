@@ -10,6 +10,7 @@ import FaceMarkerScreen from '../Views/FaceMarker';
 import FacebookComponentScreen from '../Views/FacebookComponent';
 import GoogleMapScreen from '../Views/GoogleMap';
 import CurrentLocationScreen from '../Views/CurrentLocation';
+import CalculatorScreen from '../Views/Calculator';
 
 /* Icon key is optional. It must be of type string and its value should match a valid provider icon
   name.
@@ -27,6 +28,7 @@ export default [
   { name: 'FaceMarker', screen: FaceMarkerScreen, icon: 'information-outline', isDrawerDisabled: true },
   { name: 'FacebookComponent', screen: FacebookComponentScreen, icon: 'facebook' },
   { name: 'GoogleMap', screen: GoogleMapScreen, icon: 'map' },
-  { name: 'CurrentLocation', screen: CurrentLocationScreen, icon: 'map'  }
+  { name: 'CurrentLocation', screen: CurrentLocationScreen, icon: 'map'  },
+  { name: 'Calculator', screen: CalculatorScreen, icon: 'calculator' }
 ];
  
