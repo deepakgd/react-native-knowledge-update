@@ -40,6 +40,8 @@ target 'knowledgeupdateapp' do
 
   pod 'react-native-maps', :path => '../node_modules/react-native-maps'
 
+  pod 'RNFirebase', :path => '../node_modules/react-native-firebase'
+
   target 'knowledgeupdateappTests' do
     inherit! :search_paths
     # Pods for testing
