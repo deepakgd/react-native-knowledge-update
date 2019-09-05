@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.agontuk.RNFusedLocation.RNFusedLocationPackage;
 import com.airbnb.android.react.maps.MapsPackage;
 import org.reactnative.camera.RNCameraPackage;
