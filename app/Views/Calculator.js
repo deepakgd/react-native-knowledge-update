@@ -14,6 +14,7 @@ export default class Calculator extends React.Component{
         
         this.renderKeys = this.renderKeys.bind(this);
         this.deleteNumber = this.deleteNumber.bind(this);
+        this.clearAll = this.clearAll.bind(this);
     }
 
     handleKeypad(value){
@@ -57,6 +58,10 @@ export default class Calculator extends React.Component{
         this.setState({ calculations: content });
     }
 
+    clearAll(){
+        this.setState({ calculations: null });
+    }
+
     renderKeys(){
         return (
             <View style={styles.numbers}>
@@ -97,7 +102,8 @@ export default class Calculator extends React.Component{
                         <View style={styles.column}>
                             <TouchableOpacity 
                                 style={styles.operatorButton}
-                                onPress={this.deleteNumber}    
+                                onPress={this.deleteNumber}
+                                onLongPress={this.clearAll}    
                             >
                                 <Text style={{ fontSize: 15, fontWeight: 'bold' }}>DEL</Text>
                             </TouchableOpacity>
@@ -166,7 +172,7 @@ const styles = StyleSheet.create({
     numbers: {
         flex: 8,
         flexDirection: 'row',
-        backgroundColor: 'green',
+        // backgroundColor: 'green',
         flexWrap: 'wrap',
         justifyContent: 'space-between'
     },
@@ -177,7 +183,7 @@ const styles = StyleSheet.create({
     row: {
         width: "33.3333333%",
         height: "25.2%",
-        backgroundColor: 'blue',
+        // backgroundColor: 'blue',
         justifyContent: 'center',
         alignItems:'center',
     },
