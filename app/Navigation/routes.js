@@ -11,6 +11,7 @@ import FacebookComponentScreen from '../Views/FacebookComponent';
 import GoogleMapScreen from '../Views/GoogleMap';
 import CurrentLocationScreen from '../Views/CurrentLocation';
 import CalculatorScreen from '../Views/Calculator';
+import GoogleMapRadiusScreen from '../Views/GoogleMapRadius';
 
 /* Icon key is optional. It must be of type string and its value should match a valid provider icon
   name.
@@ -29,6 +30,6 @@ export default [
   { name: 'FacebookComponent', screen: FacebookComponentScreen, icon: 'facebook' },
   { name: 'GoogleMap', screen: GoogleMapScreen, icon: 'map' },
   { name: 'CurrentLocation', screen: CurrentLocationScreen, icon: 'map'  },
-  { name: 'Calculator', screen: CalculatorScreen, icon: 'calculator' }
+  { name: 'Calculator', screen: CalculatorScreen, icon: 'calculator' },
+  { name: 'GoogleMapRadius', screen: GoogleMapRadiusScreen, icon: 'map' }
 ];
- 
