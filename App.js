@@ -19,6 +19,7 @@ import Toolbar from './app/Navigation/Toolbar';
 import AppNavigation from './app/Navigation/AppNavigation';
 import { bgStatusBar, bgDrawer } from './app/global.styles';
 import { ScrollView } from 'react-native-gesture-handler';
+import firebase from 'react-native-firebase';
 
 let store = createStore(reducer);
 /* getDrawerWidth       Default drawer width is screen width - header width
@@ -34,9 +35,86 @@ export default class App extends Component {
     this.navigator = React.createRef();
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     store.dispatch(setNavigator(this.navigator.current));
+
+    //this will get initial notification
+    // when can we use this: this can be use if app running in background at that time
+    // we receive notification, during on tap of notification we will get data
+    const notificationOpen = await firebase.notifications().getInitialNotification();
+    console.log("--", notificationOpen)
+    if (notificationOpen) {
+      const action = notificationOpen.action;
+      const notification = notificationOpen.notification;
+      var seen = [];
+      // if you send custom data in additional option you can access those data like below
+      alert(JSON.stringify(notification.data, function(key, val) {
+          if (val != null && typeof val == "object") {
+              if (seen.indexOf(val) >= 0) {
+                  return;
+              }
+              seen.push(val);
+          }
+          return val;
+      }));
+    }
+    const channel = new firebase.notifications.Android.Channel('test-channel', 'Test Channel', firebase.notifications.Android.Importance.Max)
+                .setDescription('My apps test channel');
+
+    // Create the channel
+    firebase.notifications().android.createChannel(channel);
+
+    this.notificationDisplayedListener = firebase.notifications().onNotificationDisplayed((notification) => {
+        // Process your notification as required
+        // ANDROID: Remote notifications do not contain the channel ID. You will have to specify this manually if you'd like to re-display the notification.
+        console.log("invoked display listener")
+    });
+
+    this.notificationListener = firebase.notifications().onNotification((notification) => {
+      // Process your notification as required
+      console.log("invoked onnotification listener")
+
+      notification
+          .android.setChannelId('test-channel')
+      firebase.notifications()
+          .displayNotification(notification);
+        
+    });
+
+    this.notificationOpenedListener = firebase.notifications().onNotificationOpened((notificationOpen) => {
+      console.log("invoked notification open")
+        // Get the action triggered by the notification being opened
+        const action = notificationOpen.action;
+        // Get information about the notification that was opened
+        const notification = notificationOpen.notification;
+        var seen = [];
+        alert(JSON.stringify(notification.data, function(key, val) {
+            if (val != null && typeof val == "object") {
+                if (seen.indexOf(val) >= 0) {
+                    return;
+                }
+                seen.push(val);
+            }
+            return val;
+        }));
+        firebase.notifications().removeDeliveredNotification(notification.notificationId);
+    });
+
+    this.messageListener = firebase.messaging().onMessage((message) => {
+      // Process your message as required
+      console.log("message listener")
+    });
+    setTimeout(()=> this.notificationListener(), 3000)
+  } 
+
+  componentWillUnmount() {
+      this.notificationDisplayedListener();
+      // this.notificationListener();
+      this.notificationOpenedListener();
+      this.messageListener();
   }
+
+
 
   openDrawer = () => {
     this.drawer.current.openDrawer();
