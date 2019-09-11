@@ -73,6 +73,7 @@ export default class App extends Component {
     this.notificationListener = firebase.notifications().onNotification((notification) => {
       // Process your notification as required
       console.log("invoked onnotification listener")
+      alert("i got it")
 
       notification
           .android.setChannelId('test-channel')
@@ -104,13 +105,12 @@ export default class App extends Component {
       // Process your message as required
       console.log("message listener")
     });
-    setTimeout(()=> this.notificationListener(), 3000)
   } 
 
   componentWillUnmount() {
       this.notificationDisplayedListener();
-      // this.notificationListener();
       this.notificationOpenedListener();
+      this.notificationListener();
       this.messageListener();
   }
 
