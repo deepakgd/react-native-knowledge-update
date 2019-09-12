@@ -34,7 +34,7 @@ class Home extends React.Component{
         imageStyle={{ opacity: 0.3 }}
       >
         
-        <View style={styles.bottomView}>
+        {/* <View style={styles.bottomView}>
                     <Button
                         title="Show all" 
                         buttonStyle={styles.buttonLeft}
@@ -43,7 +43,7 @@ class Home extends React.Component{
                         title="Add"
                         buttonStyle={styles.buttonRight}
                     />
-                </View>
+                </View> */}
       </ImageBackground>
     )
   }
