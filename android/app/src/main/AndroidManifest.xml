@@ -66,6 +66,22 @@
       </intent-filter>
     </receiver>
 
+
+     <service android:name="io.invertase.firebase.messaging.RNFirebaseMessagingService">
+        <intent-filter>
+          <action android:name="com.google.firebase.MESSAGING_EVENT" />
+        </intent-filter>
+    </service>
+    <service android:name="io.invertase.firebase.messaging.RNFirebaseInstanceIdService">
+      <intent-filter>
+        <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+      </intent-filter>
+    </service>
+
+ <!-- Background Messages (Optional) -->
+
+  <service android:name="io.invertase.firebase.messaging.RNFirebaseBackgroundMessagingService" />
+
     <receiver android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationPublisher" />
     <receiver android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationBootEventReceiver">
       <intent-filter>
@@ -89,20 +105,6 @@
       </intent-filter>
     </service>
 
-    <service android:name="io.invertase.firebase.messaging.RNFirebaseMessagingService">
-        <intent-filter>
-          <action android:name="com.google.firebase.MESSAGING_EVENT" />
-        </intent-filter>
-    </service>
-    <service android:name="io.invertase.firebase.messaging.RNFirebaseInstanceIdService">
-      <intent-filter>
-        <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
-      </intent-filter>
-    </service>
-
- <!-- Background Messages (Optional) -->
-
-  <service android:name="io.invertase.firebase.messaging.RNFirebaseBackgroundMessagingService" />
 
     </application>
 
