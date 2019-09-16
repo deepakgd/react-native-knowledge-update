@@ -6,6 +6,7 @@
 - Run `react-native link`
 - Run this command in the android/app/ directory to generate the debug keystore file `keytool -genkey -v -keystore debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000`
 - Paste your google-services.json file inside your android/app folder
+- Update Google map API key in Androidmanifest.xml file
 
 ## Commands
 
