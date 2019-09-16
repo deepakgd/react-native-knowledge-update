@@ -44,7 +44,7 @@
           android:value="@string/facebook_app_id"/>
       
       <meta-data android:name="com.google.android.geo.API_KEY"
-        android:value="AIzaSyA6QFoHsNE_hK1maghJujxCoAK5tygIMCc"/>
+        android:value="${APIKEY}"/>
 
 
       <meta-data  android:name="com.dieam.reactnativepushnotification.notification_channel_name"
